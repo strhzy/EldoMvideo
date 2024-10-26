@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\strhzy\\source\\repos\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj": {}
+    "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\strhzy\\source\\repos\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj": {
+    "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\strhzy\\source\\repos\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj",
+        "projectUniqueName": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj",
         "projectName": "EldoMvideo",
-        "projectPath": "C:\\Users\\strhzy\\source\\repos\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj",
+        "projectPath": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\EldoMvideo.csproj",
         "packagesPath": "C:\\Users\\strhzy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\strhzy\\source\\repos\\EldoMvideo\\EldoMvideo\\obj\\",
+        "outputPath": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
