@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\sharaga\\asp\\EldoMvideo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\views\\home\\catalog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\views\\home\\catalog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|d:\\sharaga\\asp\\eldomvideo\\eldomvideo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC7EA31E-5CA9-488C-8A9D-F539BA826F66}|EldoMvideo\\EldoMvideo.csproj|solutionrelative:eldomvideo\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "EldoMvideo\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "EldoMvideo\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-23T17:07:09.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "EldoMvideo\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "EldoMvideo\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T16:06:44.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "product.cs",
-              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Models\\product.cs",
-              "RelativeDocumentMoniker": "EldoMvideo\\Models\\product.cs",
-              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Models\\product.cs",
-              "RelativeToolTip": "EldoMvideo\\Models\\product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T15:55:34.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "EldoMvideo\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "EldoMvideo\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-13T09:57:12.304Z",
+              "WhenOpened": "2024-10-29T19:27:25.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Catalog.cshtml",
+              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Home\\Catalog.cshtml",
+              "RelativeDocumentMoniker": "EldoMvideo\\Views\\Home\\Catalog.cshtml",
+              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Views\\Home\\Catalog.cshtml",
+              "RelativeToolTip": "EldoMvideo\\Views\\Home\\Catalog.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-29T19:14:56.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "EldoMvideo\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "EldoMvideo\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T19:16:35.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "EldoMvideo\\Models\\Product.cs",
+              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Models\\Product.cs",
+              "RelativeToolTip": "EldoMvideo\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T19:10:38.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Program.cs",
+              "RelativeDocumentMoniker": "EldoMvideo\\Program.cs",
+              "ToolTip": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\Program.cs",
+              "RelativeToolTip": "EldoMvideo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T19:07:42.241Z",
               "EditorCaption": ""
             }
           ]

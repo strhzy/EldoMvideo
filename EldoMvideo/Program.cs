@@ -1,9 +1,18 @@
+using EldoMvideo.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connection));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.MapGet("db/products", (DataBaseContext db) => db.Products.ToList());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
