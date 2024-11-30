@@ -20,3 +20,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+.carousel-item {
+    transition: transform 0.5s ease-in-out;
+}

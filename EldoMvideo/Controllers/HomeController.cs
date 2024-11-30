@@ -1,5 +1,6 @@
 using EldoMvideo.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace EldoMvideo.Controllers
@@ -8,18 +9,17 @@ namespace EldoMvideo.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly DataBaseContext _context;
 
-        public HomeController(ILogger<HomeController> logger, DataBaseContext context)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
         public IActionResult Index()
         {
-            var categories = _context.Categories.ToList();
-            ViewBag.Categories = categories;
+            ViewBag.Categories = ApiHelper.Get<List<Category>>("categories");
+            ViewBag.HotProducts = ApiHelper.Get<List<Product>>("products").Where(p => p.hot == true).ToList();
+            ViewBag.Products = ApiHelper.Get<List<Product>>("products");
             return View();
         }
 
@@ -31,7 +31,7 @@ namespace EldoMvideo.Controllers
         public IActionResult Catalog(int? category_id)
         {
             bool check_cat = false;
-            if(category_id == null)
+            if (category_id == null)
             {
                 check_cat = false;
             }
@@ -40,9 +40,14 @@ namespace EldoMvideo.Controllers
             ViewBag.CategoryId = category_id;
             ViewBag.check = check_cat;
 
-            var products = _context.Products.ToList();
+            var products = ApiHelper.Get<List<Product>>("products");
 
             ViewBag.Products = products;
+            return View();
+        }
+
+        public IActionResult Login()
+        {
             return View();
         }
 

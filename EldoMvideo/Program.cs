@@ -1,18 +1,18 @@
 using EldoMvideo.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connection));
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        // Другие настройки, если необходимы
+    });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
-app.MapGet("db/products", (DataBaseContext db) => db.Products.ToList());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -24,11 +24,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
-
+app.UseAuthentication(); // Middleware для аутентификации
+app.UseAuthorization(); // Middleware для авторизации
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

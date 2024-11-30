@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EldoMvideo.bundle.scp.css",
-      "PackagePath": "staticwebassets\\EldoMvideo.bundle.scp.css"
+      "PackagePath": "staticwebassets\\EldoMvideo.s2bg51vhjp.bundle.scp.css"
     },
     {
       "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EldoMvideo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EldoMvideo.Microsoft.AspNetCore.StaticWebAssets.props",

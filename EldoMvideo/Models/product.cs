@@ -7,5 +7,6 @@
         public int category_id { get; set; }
         public string pic_link { get; set; }
         public int price { get; set; }
+        public bool hot { get; set; }
     }
 }

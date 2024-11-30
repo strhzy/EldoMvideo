@@ -1,22 +1,62 @@
 ﻿@namespace EldoMvideo.Views.Home
 @{
     ViewBag.Title = "ЭльдоМвидео";
-    var categories = ViewBag.Categories as List<EldoMvideo.Models.Category>;
+    List<Category> categories = ViewBag.Categories;
+    List<Product> hot_products = ViewBag.HotProducts;
+    List<Product> products = ViewBag.Products;
 }
 
 <div class="jumbotron mt-4">
     <h1 class="display-4">Добро пожаловать в ЭльдоМвидео!</h1>
     <p class="lead">Мы предлагаем вам лучшие товары по самым выгодным ценам.</p>
 </div>
-<div class="container mt-4">
+<div class="container mt-6">
+    <h2>Бестселлеры</h2>
+    <hr>
+    <div class="row row-cols-4 row-cols-sm-1 gap-3">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < hot_products.Count; i += 3)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "") text-center">
+                        <div class="row justify-content-center">
+                            @for (int j = i; j < Math.Min(i + 3, hot_products.Count); j++)
+                            {
+                                <div class="col-md-4">
+                                    <a class="card rounded btn" style="width: 20rem; height: 30rem; background-color: #E6E6FA">
+                                        <div class="card-body align-content-center">
+                                            <img class="card-img" src="@Html.DisplayFor(item => hot_products[j].pic_link)">
+                                            <p class="card-text">@Html.DisplayFor(item => hot_products[j].product_name)</p>
+                                            <p class="card-text">@Html.DisplayFor(item => hot_products[j].price)₽</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+    <hr>
+    <h2>Категории товаров</h2>
+    <hr>
     <div class="row row-cols-2 row-cols-sm-1 gap-3">
         @foreach(var item in categories)
         {
-            <a href="@Url.Action("Catalog", "Home", new { category_id = item.id })" class="btn card text-center text-decoration-none rounded-lg" style="width: 25rem; background-color: #E6E6FA">
+            <a href="@Url.Action("Catalog", "Home", new { category_id = item.id })" class="btn card text-center text-decoration-none rounded" style="width: 25rem; background-color: #E6E6FA">
                 <div class="card-body">
-                    <h5 class="card-header">@Html.DisplayFor(modelItem => item.category)</h5>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.descript)</p>
-                    <p>@Html.DisplayFor(modelItem => item.id)</p>
+                    <img class="card-img" src="@Html.DisplayFor(product => products.FirstOrDefault(product => product.category_id == item.id).pic_link)">
+                    <h5 class="card-header">@item.category</h5>
+                    <p class="card-text">@item.descript</p>
                 </div>
             </a>
         }

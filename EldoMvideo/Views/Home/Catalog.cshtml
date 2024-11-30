@@ -14,29 +14,26 @@
                 foreach (var item in products)
                 {
                     if(item.category_id == cat_id)
-                    {    
-                        <div class="card rounded-lg" style="width: 25rem; height: 35rem;">
+                    {
+                        <a class="card rounded btn" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                             <div class="card-body align-content-center">
                                 <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.price)</p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
                             </div>
-                        </div>
+                        </a>
                     }
-
                 }
-            }
-            else
-            {
+            } else {
                 foreach (var item in products)
                 {
-                    <div class="card rounded-lg" style="width: 25rem; height: 35rem;">
+                    <a class="card rounded btn" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                         <div class="card-body align-content-center">
                             <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
                             <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.price)</p>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
                         </div>
-                    </div>
+                    </a>
                 }
             }
         }
