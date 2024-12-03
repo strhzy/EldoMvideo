@@ -1,1 +1,347 @@
-﻿
+﻿@{
+    Account account = ViewBag.Account;
+    User user = ViewBag.User;
+    Role role = ViewBag.Role;
+    List<Order> orders = ViewBag.Orders;
+    List<ProductOrder> productOrders = ViewBag.ProductOrders;
+    List<Product> products = ViewBag.Products;
+    List<Category> categories = ViewBag.Categories;
+}
+
+<div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+    <h3>Роль: @role.role_name</h3>
+    <p>Имя: @user.first_name</p>
+    <p>Отчество: @user.middle_name</p>
+    <p>Фамилия: @user.last_name</p>
+</div>
+
+@switch(account.role_id) {
+    case 1:
+        <h2>История заказов</h2>
+        <div>
+            @foreach(var ord in orders){
+                @if(ord.account_id == account.id){
+                    <div class="card" style="margin-top: 1em; background-color: #E6E6FA">
+                        <h5>Заказ от @ord.order_date</h5>
+                        <ul>
+                            @foreach(var po in productOrders){
+                                if(po.order_id == ord.id){
+                                    <li>@products[po.product_id - 1].product_name @po.quantity x @products[po.product_id - 1].price </li>
+                                }
+                            }
+                        </ul>
+                        <h5>Итого: @ord.total_sum</h5>
+                    </div>
+                    <hr/>
+                }
+            }
+        </div>
+        break;
+    case 2:
+        <select class="form-select" id="mySelect" onchange="showDiv(this.value)">
+            <option value="add">Добавить</option>
+            <option value="upd">Обновить</option>
+            <option value="del">Удалить</option>
+        </select>
+        
+        <script>
+          function showDiv(divId) {
+            const contentDiv = document.getElementById('content');
+            const divToDisplay = document.getElementById(divId);
+
+            if (divToDisplay) {
+              contentDiv.innerHTML = '';
+              contentDiv.appendChild(divToDisplay.cloneNode(true));
+            } else {
+              console.error(`Элемент с идентификатором ${divId} не найден`);
+            }
+          }
+        </script>
+        
+        <div id="content"></div>
+        
+        <div style="display: none;">
+            <div id="add">
+                <h2 style="margin-top: 1em">Добавление продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Add" asp-controller="Account" method="post">
+                        <div>
+                            <label>Название продукта</label>
+                            <input type="text" class="form-control" name="productnameadd" placeholder="Название" required>
+                        </div>
+                        <div>
+                            <label>Категория</label>
+                            <select class="form-select" name="categoryselectadd" aria-label="Default select example" required>
+                                @foreach(var cat in categories){
+                                    <option value="@cat.id">@cat.category</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Картинка</label>
+                            <input type="text" class="form-control" name="picturelinkadd" placeholder="Ссылка на картинку" required>
+                        </div>
+                        <div>
+                            <label>Цена продукта</label>
+                            <input type="number" class="form-control" name="priceadd" placeholder="Цена" required>
+                        </div>
+                        <div style="margin-top: 1rem">
+                            <input class="form-check-input" type="checkbox" name="hotadd">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Бестселлер
+                            </label
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Добавить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <h2 style="margin-top: 1em">Добавление категории</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Add" asp-controller="Account" method="post">
+                        <div>
+                            <label>Название продукта</label>
+                            <input type="text" class="form-control" name="productnameadd" placeholder="Название" required>
+                        </div>
+                        <div>
+                            <label>Категория</label>
+                            <select class="form-select" name="categoryselectadd" aria-label="Default select example" required>
+                                @foreach(var cat in categories){
+                                    <option value="@cat.id">@cat.category</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Картинка</label>
+                            <input type="text" class="form-control" name="picturelinkadd" placeholder="Ссылка на картинку" required>
+                        </div>
+                        <div>
+                            <label>Цена продукта</label>
+                            <input type="number" class="form-control" name="priceadd" placeholder="Цена" required>
+                        </div>
+                        <div style="margin-top: 1rem">
+                            <input class="form-check-input" type="checkbox" name="hotadd">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Бестселлер
+                            </label
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Добавить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;">
+            <div id="upd">
+                <h2 style="margin-top: 1em">Редактирование продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Update" asp-controller="Account" method="post">
+                        <div>
+                            <label>Выбор продукта</label>
+                            <select class="form-select" name="productselectupd" aria-label="Default select example">
+                                @foreach(var prod in products){
+                                    <option value="@prod.id">@prod.product_name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Название продукта</label>
+                            <input type="text" class="form-control" name="productnameupd" placeholder="Название">
+                        </div>
+                        <div>
+                            <label>Категория</label>
+                            <select class="form-select" name="categoryselectupd" aria-label="Default select example">
+                                @foreach(var cat in categories){
+                                    <option value="@cat.id">@cat.category</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Картинка</label>
+                            <input type="text" class="form-control" name="picturelinkupd" placeholder="Ссылка на картинку">
+                        </div>
+                        <div>
+                            <label>Цена продукта</label>
+                            <input type="number" class="form-control" name="priceupd" placeholder="Цена">
+                        </div>
+                        <div style="margin-top: 1rem">
+                            <input class="form-check-input" type="checkbox" name="hotupd">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Бестселлер
+                            </label
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Обновить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;">
+            <div id="del">
+                <h2 style="margin-top: 1em">Удаление продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Delete" asp-controller="Account" method="post">
+                        <div>
+                            <label>Выбор продукта</label>
+                            <select class="form-select" name="productselectdel" aria-label="Default select example" required>
+                                @foreach(var prod in products){
+                                    <option value="@prod.id">@prod.product_name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Удалить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        break;
+    case 3:
+
+        <select class="form-select" style="margin-top: 1em" id="mySelect" onchange="showDiv(this.value)">
+            <option value="add">Добавить</option>
+            <option value="upd">Обновить</option>
+            <option value="del">Удалить</option>
+        </select>
+        
+        <script>
+          function showDiv(divId) {
+            const contentDiv = document.getElementById('content');
+            const divToDisplay = document.getElementById(divId);
+
+            if (divToDisplay) {
+              contentDiv.innerHTML = '';
+              contentDiv.appendChild(divToDisplay.cloneNode(true));
+            } else {
+              console.error(`Элемент с идентификатором ${divId} не найден`);
+            }
+          }
+        </script>
+        
+        <div id="content"></div>
+        
+        <div style="display: none;">
+            <div id="add">
+                <h2 style="margin-top: 1em">Добавление продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Add" asp-controller="Account" method="post">
+                        <div>
+                            <label>Название продукта</label>
+                            <input type="text" class="form-control" name="product.product_name" placeholder="Название" required>
+                        </div>
+                        <div>
+                            <label>Категория</label>
+                            <select class="form-select" name="product.category_id" aria-label="Default select example" required>
+                                @foreach(var cat in categories){
+                                    <option value="@cat.id">@cat.category</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Картинка</label>
+                            <input type="text" class="form-control" name="product.pic_link" placeholder="Ссылка на картинку" required>
+                        </div>
+                        <div>
+                            <label>Цена продукта</label>
+                            <input type="number" class="form-control" name="product.price" placeholder="Цена" required>
+                        </div>
+                        <div style="margin-top: 1rem">
+                            <input class="form-check-input" type="checkbox" name="product.hot">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Бестселлер
+                            </label
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Добавить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;">
+            <div id="upd">
+                <h2 style="margin-top: 1em">Редактирование продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Update" asp-controller="Account" method="post">
+                        <div>
+                            <label>Выбор продукта</label>
+                            <select class="form-select" name="product.id" aria-label="Default select example">
+                                @foreach(var prod in products){
+                                    <option value="@prod.id">@prod.product_name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Название продукта</label>
+                            <input type="text" class="form-control" name="product.product_name" placeholder="Название">
+                        </div>
+                        <div>
+                            <label>Категория</label>
+                            <select class="form-select" name="product.category_id" aria-label="Default select example">
+                                @foreach(var cat in categories){
+                                    <option value="@cat.id">@cat.category</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label>Картинка</label>
+                            <input type="text" class="form-control" name="product.pic_link" placeholder="Ссылка на картинку">
+                        </div>
+                        <div>
+                            <label>Цена продукта</label>
+                            <input type="number" class="form-control" name="product.price" placeholder="Цена">
+                        </div>
+                        <div style="margin-top: 1rem">
+                            <input class="form-check-input" type="checkbox" name="product.hot">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Бестселлер
+                            </label
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Обновить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;">
+            <div id="del">
+                <h2 style="margin-top: 1em">Редактирование продукта</h2>
+                <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
+                    <form asp-action="Delete" asp-controller="Account" method="post">
+                        <div>
+                            <label>Выбор продукта</label>
+                            <select class="form-select" name="productselectdel" aria-label="Default select example" required>
+                                @foreach(var prod in products){
+                                    <option value="@prod.id">@prod.product_name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+                                Удалить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        break;
+}

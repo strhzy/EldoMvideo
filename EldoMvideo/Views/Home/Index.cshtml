@@ -1,5 +1,13 @@
 ﻿@namespace EldoMvideo.Views.Home
 @{
+    Account account = new Account();
+    User user = new User();
+    Role role = new Role();
+    if (Context.Request.Cookies["account"] != null){
+        account = Newtonsoft.Json.JsonConvert.DeserializeObject<Account>(Context.Request.Cookies["account"]);
+        user = ApiHelper.Get<User>("users", account.user_id);
+        role = ApiHelper.Get<Role>("roles", account.role_id);
+    }
     ViewBag.Title = "ЭльдоМвидео";
     List<Category> categories = ViewBag.Categories;
     List<Product> hot_products = ViewBag.HotProducts;
@@ -7,6 +15,10 @@
 }
 
 <div class="jumbotron mt-4">
+    @if (Context.Request.Cookies["account"] != null && user!=null && role!=null)
+    {
+        <h1 class="display-4">Здравствуйте, @user.first_name @user.last_name. Роль: @role.role_name</h1>
+    }
     <h1 class="display-4">Добро пожаловать в ЭльдоМвидео!</h1>
     <p class="lead">Мы предлагаем вам лучшие товары по самым выгодным ценам.</p>
 </div>

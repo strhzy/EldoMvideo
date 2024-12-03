@@ -15,25 +15,35 @@
                 {
                     if(item.category_id == cat_id)
                     {
-                        <a class="card rounded btn" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
+                        <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                             <div class="card-body align-content-center">
                                 <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
+                                <form asp-action="Add" asp-controller="Cart" method="post">
+                                    <button type="submit" class="btn btn-primary">
+                                        Добавить в корзину
+                                    </button>
+                                </form>
                             </div>
-                        </a>
+                        </div>
                     }
                 }
             } else {
                 foreach (var item in products)
                 {
-                    <a class="card rounded btn" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
+                    <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                         <div class="card-body align-content-center">
                             <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
                             <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
+                            <form asp-action="Add" asp-controller="Cart" method="post">
+                                <button type="submit" class="btn btn-primary">
+                                    Добавить в корзину
+                                </button>
+                            </form>
                         </div>
-                    </a>
+                    </div>
                 }
             }
         }
