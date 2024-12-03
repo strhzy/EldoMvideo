@@ -63,6 +63,10 @@ namespace EldoMvideo.Controllers
             ViewBag.ProductOrders = ApiHelper.Get<List<ProductOrder>>("productorders");
             ViewBag.Orders = ApiHelper.Get<List<Order>>("orders");
             ViewBag.Products = ApiHelper.Get<List<Product>>("products");
+            ViewBag.Users = ApiHelper.Get<List<User>>("users");
+            ViewBag.Accounts = ApiHelper.Get<List<Account>>("accounts");
+            ViewBag.Deliveries = ApiHelper.Get<List<Delivery>>("deliveries");
+            ViewBag.Roles = ApiHelper.Get<List<Role>>("roles");
 
             ViewBag.Categories = ApiHelper.Get<List<Category>>("categories");
 
@@ -104,11 +108,206 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int productselectdel)
+        public IActionResult Delete(Product product)
         {
-            bool access = ApiHelper.Delete<Product>("products", productselectdel);
+            bool access = ApiHelper.Delete<Product>("products", product.id);
 
             return RedirectToAction("Account", "Account");
+        }
+
+        // Account
+        [HttpPost]
+        public IActionResult Add(Account account)
+        {
+            string json = JsonConvert.SerializeObject(account);
+            ApiHelper.Post<Account>(json, "accounts");
+            return RedirectToAction("Account", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Account account)
+        {
+            Account old_account = ApiHelper.Get<Account>("accounts", account.id);
+            account.acc_login = account.acc_login ?? old_account.acc_login;
+            account.password = account.password ?? old_account.password;
+            account.role_id = account.role_id > 0 ? account.role_id : old_account.role_id;
+            account.user_id = account.user_id > 0 ? account.user_id : old_account.user_id;
+            string json = JsonConvert.SerializeObject(account);
+            bool access = ApiHelper.Put<Account>(json, "accounts", account.id);
+            return RedirectToAction("Account", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Account account)
+        {
+            bool access = ApiHelper.Delete<Account>("accounts", account.id);
+            return RedirectToAction("Account", "Account");
+        }
+
+        // Category
+        [HttpPost]
+        public IActionResult Add(Category category)
+        {
+            string json = JsonConvert.SerializeObject(category);
+            ApiHelper.Post<Category>(json, "categories");
+            return RedirectToAction("Category", "Category");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Category category)
+        {
+            Category old_category = ApiHelper.Get<Category>("categories", category.id);
+            category.category = category.category ?? old_category.category;
+            category.descript = category.descript ?? old_category.descript;
+            string json = JsonConvert.SerializeObject(category);
+            bool access = ApiHelper.Put<Category>(json, "categories", category.id);
+            return RedirectToAction("Category", "Category");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Category category)
+        {
+            bool access = ApiHelper.Delete<Category>("categories", category.id);
+            return RedirectToAction("Category", "Category");
+        }
+
+        // Delivery
+        [HttpPost]
+        public IActionResult Add(Delivery delivery)
+        {
+            string json = JsonConvert.SerializeObject(delivery);
+            ApiHelper.Post<Delivery>(json, "deliveries");
+            return RedirectToAction("Delivery", "Delivery");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Delivery delivery)
+        {
+            Delivery old_delivery = ApiHelper.Get<Delivery>("deliveries", delivery.id);
+            delivery.address = delivery.address ?? old_delivery.address;
+            delivery.delivery_date = delivery.delivery_date != DateTime.MinValue ? delivery.delivery_date : old_delivery.delivery_date;
+            delivery.delivery_time = delivery.delivery_time != TimeSpan.Zero ? delivery.delivery_time : old_delivery.delivery_time;
+            string json = JsonConvert.SerializeObject(delivery);
+            bool access = ApiHelper.Put<Delivery>(json, "deliveries", delivery.id);
+            return RedirectToAction("Delivery", "Delivery");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Delivery delivery)
+        {
+            bool access = ApiHelper.Delete<Delivery>("deliveries", delivery.id);
+            return RedirectToAction("Delivery", "Delivery");
+        }
+
+        // Order
+        [HttpPost]
+        public IActionResult Add(Order order)
+        {
+            string json = JsonConvert.SerializeObject(order);
+            ApiHelper.Post<Order>(json, "orders");
+            return RedirectToAction("Order", "Order");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Order order)
+        {
+            Order old_order = ApiHelper.Get<Order>("orders", order.id);
+            order.account_id = order.account_id > 0 ? order.account_id : old_order.account_id;
+            order.delivery_id = order.delivery_id > 0 ? order.delivery_id : old_order.delivery_id;
+            order.order_date = order.order_date != DateTime.MinValue ? order.order_date : old_order.order_date;
+            order.total_sum = order.total_sum > 0 ? order.total_sum : old_order.total_sum;
+            string json = JsonConvert.SerializeObject(order);
+            bool access = ApiHelper.Put<Order>(json, "orders", order.id);
+            return RedirectToAction("Order", "Order");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Order order)
+        {
+            bool access = ApiHelper.Delete<Order>("orders", order.id);
+            return RedirectToAction("Order", "Order");
+        }
+
+        // ProductOrder
+        [HttpPost]
+        public IActionResult Add(ProductOrder productOrder)
+        {
+            string json = JsonConvert.SerializeObject(productOrder);
+            ApiHelper.Post<ProductOrder>(json, "productorders");
+            return RedirectToAction("ProductOrder", "ProductOrder");
+        }
+
+        [HttpPost]
+        public IActionResult Update(ProductOrder productOrder)
+        {
+            ProductOrder old_productOrder = ApiHelper.Get<ProductOrder>("productorders", productOrder.id);
+            productOrder.product_id = productOrder.product_id > 0 ? productOrder.product_id : old_productOrder.product_id;
+            productOrder.order_id = productOrder.order_id > 0 ? productOrder.order_id : old_productOrder.order_id;
+            productOrder.quantity = productOrder.quantity > 0 ? productOrder.quantity : old_productOrder.quantity;
+            string json = JsonConvert.SerializeObject(productOrder);
+            bool access = ApiHelper.Put<ProductOrder>(json, "productorders", productOrder.id);
+            return RedirectToAction("ProductOrder", "ProductOrder");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ProductOrder productOrder)
+        {
+            bool access = ApiHelper.Delete<ProductOrder>("productorders", productOrder.id);
+            return RedirectToAction("ProductOrder", "ProductOrder");
+        }
+
+        // Role
+        [HttpPost]
+        public IActionResult Add(Role role)
+        {
+            string json = JsonConvert.SerializeObject(role);
+            ApiHelper.Post<Role>(json, "roles");
+            return RedirectToAction("Role", "Role");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Role role)
+        {
+            Role old_role = ApiHelper.Get<Role>("roles", role.id);
+            role.role_name = role.role_name ?? old_role.role_name;
+            string json = JsonConvert.SerializeObject(role);
+            bool access = ApiHelper.Put<Role>(json, "roles", role.id);
+            return RedirectToAction("Role", "Role");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Role role)
+        {
+            bool access = ApiHelper.Delete<Role>("roles", role.id);
+            return RedirectToAction("Role", "Role");
+        }
+
+        // User
+        [HttpPost]
+        public IActionResult Add(User user)
+        {
+            string json = JsonConvert.SerializeObject(user);
+            ApiHelper.Post<User>(json, "users");
+            return RedirectToAction("User", "User");
+        }
+
+        [HttpPost]
+        public IActionResult Update(User user)
+        {
+            User old_user = ApiHelper.Get<User>("users", user.id);
+            user.first_name = user.first_name ?? old_user.first_name;
+            user.middle_name = user.middle_name ?? old_user.middle_name;
+            user.last_name = user.last_name ?? old_user.last_name;
+            string json = JsonConvert.SerializeObject(user);
+            bool access = ApiHelper.Put<User>(json, "users", user.id);
+            return RedirectToAction("User", "User");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(User user)
+        {
+            bool access = ApiHelper.Delete<User>("users", user.id);
+            return RedirectToAction("User", "User");
         }
     }
 }
