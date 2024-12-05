@@ -1,8 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc
+@using Newtonsoft.Json
+@{
     var cookies = Context.Request.Cookies;
-    try
-    {var cookieValue = cookies["имя_куки"];}
-    catch{}
 }
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EldoMvideo.styles.css" asp-append-version="true" />
-    
+
 </head>
 <body style="background-color: #DCD2ED">
     <header>
@@ -33,25 +32,27 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Конфиденциальность</a>
                         </li>
                     </ul>
-                    @if(Context.Request.Cookies["account"]!=null){
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Account">Личный кабинет</a>
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        @if (Context.Request.Cookies["account"] != null)
+                        {
+                            <li class="nav-item" style="display: flex">
+                                <a style="flex: 1;"  class="nav-link" asp-area="" asp-controller="Home" asp-action="Cart"><img style="width: 2.2rem; height: 2.2rem" src="~/images/icons8-cart-100.png" /></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a>
+                                <a  class="nav-link" asp-area="" asp-controller="Account" asp-action="Account"><img style="width: 2.2rem; height: 2.2rem" src="~/images/icons8-account-64.png" /></a>
                             </li>
-                        </ul>
-                    } else {
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout"><img style="width: 2.2rem; height: 2.2rem" src="~/images/icons8-logout-100.png" /></a>
+                            </li>
+                        } else {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
                             </li>
-                        </ul>
-                    }
+                        }
                 </div>
             </div>
         </nav>

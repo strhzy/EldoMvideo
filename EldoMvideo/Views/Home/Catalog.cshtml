@@ -3,6 +3,7 @@
     var products = ViewBag.Products as List<EldoMvideo.Models.Product>;
     int cat_id = Convert.ToInt32(ViewBag.CategoryId);
     bool check = ViewBag.check;
+    string path = ViewBag.Path;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -11,20 +12,17 @@
         @{
             if (check)
             {
+                
                 foreach (var item in products)
                 {
                     if(item.category_id == cat_id)
                     {
                         <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                             <div class="card-body align-content-center">
-                                <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
-                                <form asp-action="Add" asp-controller="Cart" method="post">
-                                    <button type="submit" class="btn btn-primary">
-                                        Добавить в корзину
-                                    </button>
-                                </form>
+                                <img class="card-img " src="@item.pic_link">
+                                <p class="card-text">@item.product_name</p>
+                                <p class="card-text">@item.price₽</p>
+                                <a class="btn btn-success" href="/Home/AddToCart?ID=@item.id&Path=@path">Добавить в корзину</a>
                             </div>
                         </div>
                     }
@@ -34,14 +32,10 @@
                 {
                     <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
                         <div class="card-body align-content-center">
-                            <img class="card-img " src="@Html.DisplayFor(modelItem => item.pic_link)">
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.product_name)</p>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.price)₽</p>
-                            <form asp-action="Add" asp-controller="Cart" method="post">
-                                <button type="submit" class="btn btn-primary">
-                                    Добавить в корзину
-                                </button>
-                            </form>
+                            <img class="card-img " src="@item.pic_link">
+                            <p class="card-text">@item.product_name</p>
+                            <p class="card-text">@item.price₽</p>
+                            <a class="btn btn-success" href="/Home/AddToCart?ID=@item.id&Path=@path">Добавить в корзину</a>
                         </div>
                     </div>
                 }

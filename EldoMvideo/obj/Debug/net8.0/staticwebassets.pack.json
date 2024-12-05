@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\account-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\account-svgrepo-com.svg"
+    },
+    {
+      "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-account-64.png",
+      "PackagePath": "staticwebassets\\images\\icons8-account-64.png"
+    },
+    {
+      "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-cart-100.png",
+      "PackagePath": "staticwebassets\\images\\icons8-cart-100.png"
+    },
+    {
+      "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-logout-100.png",
+      "PackagePath": "staticwebassets\\images\\icons8-logout-100.png"
+    },
+    {
       "Id": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

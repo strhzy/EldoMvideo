@@ -1,5 +1,9 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\account-svgrepo-com.svg
+wwwroot\images\icons8-account-64.png
+wwwroot\images\icons8-cart-100.png
+wwwroot\images\icons8-logout-100.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

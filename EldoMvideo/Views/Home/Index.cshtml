@@ -5,8 +5,8 @@
     Role role = new Role();
     if (Context.Request.Cookies["account"] != null){
         account = Newtonsoft.Json.JsonConvert.DeserializeObject<Account>(Context.Request.Cookies["account"]);
-        user = ApiHelper.Get<User>("users", account.user_id);
-        role = ApiHelper.Get<Role>("roles", account.role_id);
+        user = await ApiHelper.Get<User>("users", account.user_id);
+        role = await ApiHelper.Get<Role>("roles", account.role_id);
     }
     ViewBag.Title = "ЭльдоМвидео";
     List<Category> categories = ViewBag.Categories;
@@ -35,13 +35,14 @@
                             @for (int j = i; j < Math.Min(i + 3, hot_products.Count); j++)
                             {
                                 <div class="col-md-4">
-                                    <a class="card rounded btn" style="width: 20rem; height: 30rem; background-color: #E6E6FA">
+                                    <div class="card rounded" style="width: 20rem; height: 30rem; background-color: #E6E6FA">
                                         <div class="card-body align-content-center">
-                                            <img class="card-img" src="@Html.DisplayFor(item => hot_products[j].pic_link)">
-                                            <p class="card-text">@Html.DisplayFor(item => hot_products[j].product_name)</p>
-                                            <p class="card-text">@Html.DisplayFor(item => hot_products[j].price)₽</p>
+                                            <img class="card-img" src="@hot_products[j].pic_link">
+                                            <p class="card-text">@hot_products[j].product_name</p>
+                                            <p class="card-text">@hot_products[j].price₽</p>
+                                            <a class="btn btn-success" href="/Home/AddToCart?ID=@hot_products[j].id">Добавить в корзину</a>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             }
                         </div>

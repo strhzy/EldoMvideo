@@ -1,0 +1,45 @@
+﻿@{
+    Cart cart = ViewBag.Cart;
+
+    List<Product> cartLines = cart.CartLines;
+
+}
+
+
+@foreach (var item in cartLines)
+{
+    <div class="card rounded" style="margin-top: 1rem; width: 25rem; height: 35rem; background-color: #E6E6FA">
+        <div class="card-body align-content-center">
+            <img class="card-img " src="@item.pic_link">
+            <p class="card-text">@item.product_name</p>
+            <p class="card-text">@item.price₽</p>
+            <div style="display: flex;">
+                <a style="flex: 1;" class="btn btn-danger" href="/Home/RemoveFromCart?ID=@item.id">Убрать из корзины</a>
+                <a style="flex: 1;" class="btn btn-success" href="/Home/AddToCart?ID=@item.id">Добавить в корзину</a>
+            </div>
+        </div>
+    </div>
+}
+
+<h3>Итого</h3>
+<h3>@cart.FinalPrice₽</h3>
+<a style="margin-top: 1rem;" class="btn btn-danger" href="/Home/RemoveAllFromCart"><h4>Очистить корзину</h4></a>
+<form asp-action="MakeOrder" asp-controller="Home" method="post">
+    <div>
+        <label>Адрес доставки</label>
+        <input type="text" class="form-control" name="delivery.address" placeholder="Адрес" required>
+    </div>
+    <div>
+        <label>Дата доставки</label>
+        <input type="date" class="form-control" name="delivery.delivery_date" placeholder="Название" required>
+    </div>
+    <div>
+        <label>Время доставки</label>
+        <input type="time" class="form-control" name="delivery.delivery_time" placeholder="Название" required>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
+            Оформить заказ
+        </button>
+    </div>
+</form>

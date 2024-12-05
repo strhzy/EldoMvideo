@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l/hnPD/Bt8I7pWwQsdRnXs8C44gemOfggGfIKtHxrac=",
+  "Hash": "wh7h7DKNhGAZJJ3nVNaTS/kQ+BAokUzCxMxYS1WIM4k=",
   "Source": "EldoMvideo",
   "BasePath": "_content/EldoMvideo",
   "Mode": "Default",
@@ -99,6 +99,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\account-svgrepo-com.svg",
+      "SourceId": "EldoMvideo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\",
+      "BasePath": "_content/EldoMvideo",
+      "RelativePath": "images/account-svgrepo-com#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b7ovy6jk3r",
+      "Integrity": "R/Yn3k27X7xQt1vhQwqDAcTmdoFvEnrLQH1YtYj8gyI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\account-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-account-64.png",
+      "SourceId": "EldoMvideo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\",
+      "BasePath": "_content/EldoMvideo",
+      "RelativePath": "images/icons8-account-64#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k504bwuq7c",
+      "Integrity": "OFux7rFYohCwB71Z1KCJpMjdI93Z3KmJyJEkbfl1CIE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons8-account-64.png"
+    },
+    {
+      "Identity": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-cart-100.png",
+      "SourceId": "EldoMvideo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\",
+      "BasePath": "_content/EldoMvideo",
+      "RelativePath": "images/icons8-cart-100#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7dswsco764",
+      "Integrity": "ZRxoHrsllbfMzDqCQREdTTNfn/AMmtmPX+VsYfRL548=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons8-cart-100.png"
+    },
+    {
+      "Identity": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-logout-100.png",
+      "SourceId": "EldoMvideo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\",
+      "BasePath": "_content/EldoMvideo",
+      "RelativePath": "images/icons8-logout-100#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eavzrrhyhi",
+      "Integrity": "2p/FxFUCsT6mU08pFnn6adz3CL50onGLzf3R2NTfy9o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons8-logout-100.png"
     },
     {
       "Identity": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\js\\site.js",
@@ -1425,7 +1509,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Oct 2024 19:07:54 GMT"
+          "Value": "Wed, 04 Dec 2024 17:17:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1462,7 +1546,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Oct 2024 19:07:54 GMT"
+          "Value": "Wed, 04 Dec 2024 17:17:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1507,7 +1591,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Oct 2024 19:07:54 GMT"
+          "Value": "Wed, 04 Dec 2024 17:17:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1552,7 +1636,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Oct 2024 19:07:54 GMT"
+          "Value": "Wed, 04 Dec 2024 17:17:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1645,6 +1729,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/account-svgrepo-com.b7ovy6jk3r.svg",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\account-svgrepo-com.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R/Yn3k27X7xQt1vhQwqDAcTmdoFvEnrLQH1YtYj8gyI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:15:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b7ovy6jk3r"
+        },
+        {
+          "Name": "label",
+          "Value": "images/account-svgrepo-com.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-R/Yn3k27X7xQt1vhQwqDAcTmdoFvEnrLQH1YtYj8gyI="
+        }
+      ]
+    },
+    {
+      "Route": "images/account-svgrepo-com.svg",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\account-svgrepo-com.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R/Yn3k27X7xQt1vhQwqDAcTmdoFvEnrLQH1YtYj8gyI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:15:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R/Yn3k27X7xQt1vhQwqDAcTmdoFvEnrLQH1YtYj8gyI="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-account-64.k504bwuq7c.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-account-64.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1745"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OFux7rFYohCwB71Z1KCJpMjdI93Z3KmJyJEkbfl1CIE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:21:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k504bwuq7c"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icons8-account-64.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OFux7rFYohCwB71Z1KCJpMjdI93Z3KmJyJEkbfl1CIE="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-account-64.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-account-64.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1745"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OFux7rFYohCwB71Z1KCJpMjdI93Z3KmJyJEkbfl1CIE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:21:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OFux7rFYohCwB71Z1KCJpMjdI93Z3KmJyJEkbfl1CIE="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-cart-100.7dswsco764.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-cart-100.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1377"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZRxoHrsllbfMzDqCQREdTTNfn/AMmtmPX+VsYfRL548=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:27:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7dswsco764"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icons8-cart-100.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZRxoHrsllbfMzDqCQREdTTNfn/AMmtmPX+VsYfRL548="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-cart-100.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-cart-100.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1377"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZRxoHrsllbfMzDqCQREdTTNfn/AMmtmPX+VsYfRL548=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:27:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZRxoHrsllbfMzDqCQREdTTNfn/AMmtmPX+VsYfRL548="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-logout-100.eavzrrhyhi.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-logout-100.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2p/FxFUCsT6mU08pFnn6adz3CL50onGLzf3R2NTfy9o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:22:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eavzrrhyhi"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icons8-logout-100.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2p/FxFUCsT6mU08pFnn6adz3CL50onGLzf3R2NTfy9o="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons8-logout-100.png",
+      "AssetFile": "D:\\sharaga\\asp\\EldoMvideo\\EldoMvideo\\wwwroot\\images\\icons8-logout-100.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2p/FxFUCsT6mU08pFnn6adz3CL50onGLzf3R2NTfy9o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 04 Dec 2024 17:22:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2p/FxFUCsT6mU08pFnn6adz3CL50onGLzf3R2NTfy9o="
         }
       ]
     },

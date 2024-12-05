@@ -8,7 +8,7 @@ public static class ApiHelper
 {
     private static readonly string _url = "http://147.45.196.64:8080";
 
-    public static T? Get<T>(string model, long id = 0)
+    public async static Task<T?> Get<T>(string model, long id = 0)
     {
         var client = new HttpClient();
         var request = id == 0 ? $"/{model}" : $"/{model}/{id}";
@@ -17,7 +17,7 @@ public static class ApiHelper
         return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
     }
 
-    public static bool Put<T>(string json, string model, long id)
+    public async static Task<bool> Put<T>(string json, string model, long id)
     {
         var client = new HttpClient();
         HttpContent body = new StringContent(json, Encoding.UTF8, "application/json");
@@ -26,7 +26,7 @@ public static class ApiHelper
         return true;
     }
 
-    public static bool Post<T>(string json, string model)
+    public async static Task<bool> Post<T>(string json, string model)
     {
         var client = new HttpClient();
         HttpContent body = new StringContent(json, Encoding.UTF8, "application/json");
@@ -35,7 +35,7 @@ public static class ApiHelper
         return true;
     }
 
-    public static bool Delete<T>(string model, long id)
+    public async static Task<bool> Delete<T>(string model, long id)
     {
         var client = new HttpClient();
         var response = client.DeleteAsync($"{_url}/{model}/{id}").Result;

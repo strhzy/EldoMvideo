@@ -42,33 +42,6 @@
         </div>
         break;
     case 2:
-        <select id="select">
-            <option value="products">Продукты</option>
-            <option value="users">Пользователи</option>
-            <option value="roles">Роли</option>
-            <option value="productorders">Заказы продуктов</option>
-            <option value="orders">Заказы</option>
-            <option value="deliveries">Доставки</option>
-            <option value="categories">Категории</option>
-            <option value="accounts">Аккаунты</option>
-        </select>
-
-        <script>
-            const select = document.getElementById('select');
-            const forms = document.querySelectorAll('.form');
-
-            select.addEventListener('change', (e) => {
-            const selectedValue = e.target.value;
-            forms.forEach((form) => {
-                if (form.id === selectedValue) {
-                form.style.display = 'block';
-                } else {
-                form.style.display = 'none';
-                }
-            });
-            });
-        </script>
-
         <div id="products">
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление продукта</h2>
