@@ -18,7 +18,7 @@ namespace EldoMvideo.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Categories =await ApiHelper.Get<List<Category>>("categories");
+            ViewBag.Categories = await ApiHelper.Get<List<Category>>("categories");
             List<Product> hot_prod = await (ApiHelper.Get<List<Product>>("products"));
             ViewBag.Products = await ApiHelper.Get<List<Product>>("products");
 
@@ -42,8 +42,11 @@ namespace EldoMvideo.Controllers
 
             ViewBag.CategoryId = category_id;
             ViewBag.check = check_cat;
+            
 
             var products = await ApiHelper.Get<List<Product>>("products");
+            string type = products[0].GetType().Name;
+            Console.WriteLine(type);
 
             ViewBag.Products = products;
             string path = Request.Path + Request.QueryString;
@@ -71,7 +74,7 @@ namespace EldoMvideo.Controllers
             Cart cart = new Cart();
             if (Request.Cookies["Cart"] != null)
                 cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
-            cart.CartLines.Add(await ApiHelper.Get<Product>("products", ID));
+            cart.CartLines.Add( await ApiHelper.Get<Product>("products", ID));
 
             Response.Cookies.Append("Cart", JsonConvert.SerializeObject(cart));
 
@@ -118,42 +121,47 @@ namespace EldoMvideo.Controllers
         [HttpPost]
         public async Task<IActionResult> MakeOrder(Delivery delivery)
         {
-            Account account = JsonConvert.DeserializeObject<Account>(Request.Cookies["account"]);
-            ProductOrder productOrder = new ProductOrder();
             Cart cart = new Cart();
-
             if (Request.Cookies["Cart"] != null)
-                cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
-
-            Order order = new Order();
-
-            List<Order> orders = await ApiHelper.Get<List<Order>>("orders");
-            List<Delivery> deliveries = await ApiHelper.Get<List<Delivery>>("deiveries");
-
-            int count_ords = orders.Last().id;
-            int count_dels = deliveries.Last().id;
-
-            delivery.id = count_dels + 1;
-
-            bool success = await ApiHelper.Post<Delivery>(JsonConvert.SerializeObject(delivery),"deliveries");
-
-            order.id = count_ords+1;
-            order.account_id = account.id;
-            order.delivery_id = delivery.id;
-            order.order_date = DateTime.Now;
-            order.total_sum = cart.FinalPrice;
-
-            success = await ApiHelper.Post<Order>(JsonConvert.SerializeObject(order), "orders");
-
-            foreach (var item in cart.CartLines)
             {
-                productOrder.product_id = item.id;
-                productOrder.order_id = order.id;
-                productOrder.quantity = 1;
-                ApiHelper.Post<ProductOrder>(JsonConvert.SerializeObject(productOrder), "productorders");
-            }
+                cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
+                Account account = JsonConvert.DeserializeObject<Account>(Request.Cookies["account"]);
+                delivery.delivery_date = delivery.delivery_date.ToUniversalTime();
+                string json = JsonConvert.SerializeObject(delivery);
+                bool success = await ApiHelper.Post<Delivery>(json,"deliveries");
+                List<Delivery> deliveries = await ApiHelper.Get<List<Delivery>>("deliveries");
+                Delivery delivery2 = deliveries.Where(d =>
+                    d.delivery_date == delivery.delivery_date &&
+                    d.address == delivery.address).FirstOrDefault();
+                
+                Order order = new Order();
+                order.order_date = DateTime.Now.ToUniversalTime();
+                order.delivery_id = delivery2.id;
+                order.account_id = account.id;
+                order.total_sum = cart.FinalPrice;
 
-            return RedirectToAction("RemoveAllFromCart", "Home");
+                success = await ApiHelper.Post<Order>(JsonConvert.SerializeObject(order), "orders");
+                
+                List<Order> orders = await ApiHelper.Get<List<Order>>("orders");
+                Order order2 = (from o in orders where o.order_date == delivery.delivery_date select o).FirstOrDefault();
+                
+                ProductOrder productOrder = new ProductOrder();
+                productOrder.order_id = order2.id;
+                foreach (var item in cart.CartLines)
+                {
+                    productOrder.product_id = item.id;
+                    productOrder.quantity = 1;
+                    
+                    success = await ApiHelper.Post<ProductOrder>(JsonConvert.SerializeObject(productOrder), "productorders");
+                }
+                
+                return RedirectToAction("RemoveAllFromCart", "Home");
+                
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

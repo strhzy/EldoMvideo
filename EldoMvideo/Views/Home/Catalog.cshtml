@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Каталог";
-    var products = ViewBag.Products as List<EldoMvideo.Models.Product>;
+    var products = ViewBag.Products;
     int cat_id = Convert.ToInt32(ViewBag.CategoryId);
     bool check = ViewBag.check;
     string path = ViewBag.Path;

@@ -46,7 +46,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Название продукта</label>
                             <input type="text" class="form-control" name="product.product_name" placeholder="Название" required>
@@ -54,7 +54,8 @@
                         <div>
                             <label>Категория</label>
                             <select class="form-select" name="product.category_id" aria-label="Default select example" required>
-                                @foreach(var cat in categories){
+                                @foreach (var cat in categories)
+                                {
                                     <option value="@cat.id">@cat.category</option>
                                 }
                             </select>
@@ -71,7 +72,7 @@
                             <input class="form-check-input" type="checkbox" name="product.hot">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Бестселлер
-                            </label
+                            </label>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
@@ -84,7 +85,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор продукта</label>
                             <select class="form-select" name="product.id" aria-label="Default select example">
@@ -117,7 +118,7 @@
                             <input class="form-check-input" type="checkbox" name="product.hot">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Бестселлер
-                            </label
+                            </label>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
@@ -128,9 +129,9 @@
                 </div>
             </div>
             <div id="del">
-                <h2 style="margin-top: 1em">Редактирование продукта</h2>
+                <h2 style="margin-top: 1em">Удаление продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор продукта</label>
                             <select class="form-select" name="product.id" aria-label="Default select example" required>
@@ -152,7 +153,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление пользователя</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddUser" asp-controller="Account" method="post">
                         <div>
                             <label>Имя пользователя</label>
                             <input type="text" class="form-control" name="user.first_name" placeholder="Имя" required>
@@ -176,7 +177,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование пользователя</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateUser" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор пользователя</label>
                             <select class="form-select" name="user.id" aria-label="Default select example">
@@ -208,7 +209,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление пользователя</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteUser" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор пользователя</label>
                             <select class="form-select" name="user.id" aria-label="Default select example" required>
@@ -230,7 +231,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление роли</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddRole" asp-controller="Account" method="post">
                         <div>
                             <label>Название роли</label>
                             <input type="text" class="form-control" name="role.role_name" placeholder="Название роли" required>
@@ -246,7 +247,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование роли</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateRole" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор роли</label>
                             <select class="form-select" name="role.id" aria-label="Default select example">
@@ -270,7 +271,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление роли</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteRole" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор роли</label>
                             <select class="form-select" name="role.id" aria-label="Default select example" required>
@@ -292,7 +293,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление заказа продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddProductOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор продукта</label>
                             <select class="form-select" name="productOrder.product_id" aria-label="Default select example" required>
@@ -324,7 +325,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование заказа продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateProductOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор заказа продукта</label>
                             <select class="form-select" name="productOrder.id" aria-label="Default select example">
@@ -364,7 +365,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление заказа продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteProductOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор заказа продукта</label>
                             <select class="form-select" name="productOrder.id" aria-label="Default select example" required>
@@ -386,7 +387,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление заказа</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор аккаунта</label>
                             <select class="form-select" name="order.account_id" aria-label="Default select example" required>
@@ -422,7 +423,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование заказа</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор заказа</label>
                             <select class="form-select" name="order.id" aria-label="Default select example">
@@ -466,7 +467,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление заказа</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteOrder" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор заказа</label>
                             <select class="form-select" name="order.id" aria-label="Default select example" required>
@@ -488,7 +489,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление доставки</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddDelivery" asp-controller="Account" method="post">
                         <div>
                             <label>Адрес доставки</label>
                             <input type="text" class="form-control" name="delivery.address" placeholder="Адрес доставки" required>
@@ -512,7 +513,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование доставки</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateDelivery" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор доставки</label>
                             <select class="form-select" name="delivery.id" aria-label="Default select example">
@@ -544,7 +545,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление доставки</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteDelivery" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор доставки</label>
                             <select class="form-select" name="delivery.id" aria-label="Default select example" required>
@@ -566,7 +567,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление категории</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddCategory" asp-controller="Account" method="post">
                         <div>
                             <label>Название категории</label>
                             <input type="text" class="form-control" name="category.category" placeholder="Название категории" required>
@@ -586,7 +587,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование категории</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateCategory" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор категории</label>
                             <select class="form-select" name="category.id" aria-label="Default select example">
@@ -614,7 +615,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление категории</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteCategory" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор категории</label>
                             <select class="form-select" name="category.id" aria-label="Default select example" required>
@@ -636,7 +637,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление аккаунта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddAccount" asp-controller="Account" method="post">
                         <div>
                             <label>Логин аккаунта</label>
                             <input type="text" class="form-control" name="account.acc_login" placeholder="Логин аккаунта" required>
@@ -672,7 +673,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование аккаунта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateAccount" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор аккаунта</label>
                             <select class="form-select" name="account.id" aria-label="Default select example">
@@ -716,7 +717,7 @@
             <div id="del">
                 <h2 style="margin-top: 1em">Удаление аккаунта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteAccount" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор аккаунта</label>
                             <select class="form-select" name="account.id" aria-label="Default select example" required>
@@ -740,7 +741,7 @@
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Add" asp-controller="Account" method="post">
+                    <form asp-action="AddProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Название продукта</label>
                             <input type="text" class="form-control" name="product.product_name" placeholder="Название" required>
@@ -765,7 +766,7 @@
                             <input class="form-check-input" type="checkbox" name="product.hot">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Бестселлер
-                            </label
+                            </label>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
@@ -778,7 +779,7 @@
             <div id="upd">
                 <h2 style="margin-top: 1em">Редактирование продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Update" asp-controller="Account" method="post">
+                    <form asp-action="UpdateProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор продукта</label>
                             <select class="form-select" name="product.id" aria-label="Default select example">
@@ -811,7 +812,7 @@
                             <input class="form-check-input" type="checkbox" name="product.hot">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Бестселлер
-                            </label
+                            </label>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">
@@ -822,9 +823,9 @@
                 </div>
             </div>
             <div id="del">
-                <h2 style="margin-top: 1em">Редактирование продукта</h2>
+                <h2 style="margin-top: 1em">Удаление продукта</h2>
                 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
-                    <form asp-action="Delete" asp-controller="Account" method="post">
+                    <form asp-action="DeleteProduct" asp-controller="Account" method="post">
                         <div>
                             <label>Выбор продукта</label>
                             <select class="form-select" name="product.id" aria-label="Default select example" required>

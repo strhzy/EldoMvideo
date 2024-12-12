@@ -7,9 +7,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login";
-        // Другие настройки, если необходимы
+
     });
-// Add services to the container.
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -25,8 +25,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthentication(); // Middleware для аутентификации
-app.UseAuthorization(); // Middleware для авторизации
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

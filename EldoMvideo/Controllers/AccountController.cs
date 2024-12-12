@@ -59,16 +59,18 @@ namespace EldoMvideo.Controllers
             Account account = JsonConvert.DeserializeObject<Account>(Request.Cookies["account"]);
             User user = await ApiHelper.Get<User>("users", account.user_id);
             Role role = await ApiHelper.Get<Role>("roles", account.role_id);
+            
+            
 
             ViewBag.ProductOrders = await ApiHelper.Get<List<ProductOrder>>("productorders");
             ViewBag.Orders = await ApiHelper.Get<List<Order>>("orders");
             ViewBag.Products = await ApiHelper.Get<List<Product>>("products");
-            ViewBag.Users = ApiHelper.Get<List<User>>("users");
-            ViewBag.Accounts = ApiHelper.Get<List<Account>>("accounts");
-            ViewBag.Deliveries = ApiHelper.Get<List<Delivery>>("deliveries");
-            ViewBag.Roles = ApiHelper.Get<List<Role>>("roles");
+            ViewBag.Users = await ApiHelper.Get<List<User>>("users");
+            ViewBag.Accounts = await ApiHelper.Get<List<Account>>("accounts");
+            ViewBag.Deliveries = await ApiHelper.Get<List<Delivery>>("deliveries");
+            ViewBag.Roles = await ApiHelper.Get<List<Role>>("roles");
 
-            ViewBag.Categories = ApiHelper.Get<List<Category>>("categories");
+            ViewBag.Categories = await ApiHelper.Get<List<Category>>("categories");
 
             ViewBag.Account = account;
             ViewBag.Role = role;
@@ -78,19 +80,20 @@ namespace EldoMvideo.Controllers
             return View();
         }
 
+        //products
         [HttpPost]
-        public async Task<IActionResult> Add(Product product)
+        public async Task<IActionResult> AddProduct(Product product)
         {
-
             string json = JsonConvert.SerializeObject(product);
 
-            ApiHelper.Post<Product>(json, "products");
+
+            bool success = await ApiHelper.Post<Product>(json, "products");
 
             return RedirectToAction("Account", "Account");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Product product)
+        public async Task<IActionResult> UpdateProduct(Product product)
         {
             Product old_product = await ApiHelper.Get<Product>("products", product.id);
 
@@ -108,7 +111,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(Product product)
+        public async Task<IActionResult> DeleteProduct(Product product)
         {
             bool access = await ApiHelper.Delete<Product>("products", product.id);
 
@@ -117,15 +120,15 @@ namespace EldoMvideo.Controllers
 
         // Account
         [HttpPost]
-        public async Task<IActionResult> Add(Account account)
+        public async Task<IActionResult> AddAccount(Account account)
         {
             string json = JsonConvert.SerializeObject(account);
-            ApiHelper.Post<Account>(json, "accounts");
+            bool success = await ApiHelper.Post<Account>(json, "accounts");
             return RedirectToAction("Account", "Account");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Account account)
+        public async Task<IActionResult> UpdateAccount(Account account)
         {
             Account old_account = await ApiHelper.Get<Account>("accounts", account.id);
             account.acc_login = account.acc_login ?? old_account.acc_login;
@@ -138,7 +141,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(Account account)
+        public async Task<IActionResult> DeleteAccount(Account account)
         {
             bool access = await ApiHelper.Delete<Account>("accounts", account.id);
             return RedirectToAction("Account", "Account");
@@ -146,15 +149,15 @@ namespace EldoMvideo.Controllers
 
         // Category
         [HttpPost]
-        public async Task<IActionResult> Add(Category category)
+        public async Task<IActionResult> AddCategory(Category category)
         {
             string json = JsonConvert.SerializeObject(category);
-            ApiHelper.Post<Category>(json, "categories");
+            bool success = await ApiHelper.Post<Category>(json, "categories");
             return RedirectToAction("Category", "Category");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(Category category)
+        public async Task<IActionResult> UpdateCategory(Category category)
         {
             Category old_category = await ApiHelper.Get<Category>("categories", category.id);
             category.category = category.category ?? old_category.category;
@@ -165,7 +168,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(Category category)
+        public async Task<IActionResult> DeleteCategory(Category category)
         {
             bool access = await ApiHelper.Delete<Category>("categories", category.id);
             return RedirectToAction("Category", "Category");
@@ -173,27 +176,26 @@ namespace EldoMvideo.Controllers
 
         // Delivery
         [HttpPost]
-        public async Task<IActionResult>Add(Delivery delivery)
+        public async Task<IActionResult> AddDelivery(Delivery delivery)
         {
             string json = JsonConvert.SerializeObject(delivery);
-            ApiHelper.Post<Delivery>(json, "deliveries");
+            bool success = await ApiHelper.Post<Delivery>(json, "deliveries");
             return RedirectToAction("Delivery", "Delivery");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(Delivery delivery)
+        public async Task<IActionResult> UpdateDelivery(Delivery delivery)
         {
             Delivery old_delivery = await ApiHelper.Get<Delivery>("deliveries", delivery.id);
             delivery.address = delivery.address ?? old_delivery.address;
             delivery.delivery_date = delivery.delivery_date != DateTime.MinValue ? delivery.delivery_date : old_delivery.delivery_date;
-            delivery.delivery_time = delivery.delivery_time != TimeSpan.Zero ? delivery.delivery_time : old_delivery.delivery_time;
             string json = JsonConvert.SerializeObject(delivery);
             bool access = await ApiHelper.Put<Delivery>(json, "deliveries", delivery.id);
             return RedirectToAction("Delivery", "Delivery");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(Delivery delivery)
+        public async Task<IActionResult> DeleteDelivery(Delivery delivery)
         {
             bool access = await ApiHelper.Delete<Delivery>("deliveries", delivery.id);
             return RedirectToAction("Delivery", "Delivery");
@@ -201,15 +203,15 @@ namespace EldoMvideo.Controllers
 
         // Order
         [HttpPost]
-        public async Task<IActionResult>Add(Order order)
+        public async Task<IActionResult>AddOrder(Order order)
         {
             string json = JsonConvert.SerializeObject(order);
-            ApiHelper.Post<Order>(json, "orders");
+            bool success = await ApiHelper.Post<Order>(json, "orders");
             return RedirectToAction("Order", "Order");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(Order order)
+        public async Task<IActionResult>UpdateOrder(Order order)
         {
             Order old_order = await ApiHelper.Get<Order>("orders", order.id);
             order.account_id = order.account_id > 0 ? order.account_id : old_order.account_id;
@@ -222,7 +224,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(Order order)
+        public async Task<IActionResult>DeleteOrder(Order order)
         {
             bool access = await ApiHelper.Delete<Order>("orders", order.id);
             return RedirectToAction("Order", "Order");
@@ -230,15 +232,15 @@ namespace EldoMvideo.Controllers
 
         // ProductOrder
         [HttpPost]
-        public async Task<IActionResult>Add(ProductOrder productOrder)
+        public async Task<IActionResult>AddProductOrder(ProductOrder productOrder)
         {
             string json = JsonConvert.SerializeObject(productOrder);
-            ApiHelper.Post<ProductOrder>(json, "productorders");
+            bool success = await ApiHelper.Post<ProductOrder>(json, "productorders");
             return RedirectToAction("ProductOrder", "ProductOrder");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(ProductOrder productOrder)
+        public async Task<IActionResult>UpdateProductOrder(ProductOrder productOrder)
         {
             ProductOrder old_productOrder = await ApiHelper.Get<ProductOrder>("productorders", productOrder.id);
             productOrder.product_id = productOrder.product_id > 0 ? productOrder.product_id : old_productOrder.product_id;
@@ -250,7 +252,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(ProductOrder productOrder)
+        public async Task<IActionResult>DeleteProductOrder(ProductOrder productOrder)
         {
             bool access = await ApiHelper.Delete<ProductOrder>("productorders", productOrder.id);
             return RedirectToAction("ProductOrder", "ProductOrder");
@@ -258,15 +260,15 @@ namespace EldoMvideo.Controllers
 
         // Role
         [HttpPost]
-        public async Task<IActionResult>Add(Role role)
+        public async Task<IActionResult>AddRole(Role role)
         {
             string json = JsonConvert.SerializeObject(role);
-            ApiHelper.Post<Role>(json, "roles");
+            bool success = await ApiHelper.Post<Role>(json, "roles");
             return RedirectToAction("Role", "Role");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(Role role)
+        public async Task<IActionResult>UpdateRole(Role role)
         {
             Role old_role = await ApiHelper.Get<Role>("roles", role.id);
             role.role_name = role.role_name ?? old_role.role_name;
@@ -276,7 +278,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(Role role)
+        public async Task<IActionResult>DeleteRole(Role role)
         {
             bool access = await ApiHelper.Delete<Role>("roles", role.id);
             return RedirectToAction("Role", "Role");
@@ -284,15 +286,15 @@ namespace EldoMvideo.Controllers
 
         // User
         [HttpPost]
-        public async Task<IActionResult>Add(User user)
+        public async Task<IActionResult>AddUser(User user)
         {
             string json = JsonConvert.SerializeObject(user);
-            ApiHelper.Post<User>(json, "users");
+            bool success = await ApiHelper.Post<User>(json, "users");
             return RedirectToAction("User", "User");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Update(User user)
+        public async Task<IActionResult>UpdateUser(User user)
         {
             User old_user = await ApiHelper.Get<User>("users", user.id);
             user.first_name = user.first_name ?? old_user.first_name;
@@ -304,7 +306,7 @@ namespace EldoMvideo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Delete(User user)
+        public async Task<IActionResult>DeleteUser(User user)
         {
             bool access = await ApiHelper.Delete<User>("users", user.id);
             return RedirectToAction("User", "User");
