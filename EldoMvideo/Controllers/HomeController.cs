@@ -143,7 +143,13 @@ namespace EldoMvideo.Controllers
                 success = await ApiHelper.Post<Order>(JsonConvert.SerializeObject(order), "orders");
                 
                 List<Order> orders = await ApiHelper.Get<List<Order>>("orders");
-                Order order2 = (from o in orders where o.order_date == delivery.delivery_date select o).FirstOrDefault();
+                Order order2 = orders
+                    .Where(o => 
+                        o.delivery_id == order.delivery_id &&
+                        o.account_id == order.account_id &&
+                        Math.Abs(o.total_sum - order.total_sum) < 0.0001 && // Учет точности
+                        o.order_date.Date == order.order_date.Date)        // Сравнение только даты
+                    .FirstOrDefault();
                 
                 ProductOrder productOrder = new ProductOrder();
                 productOrder.order_id = order2.id;

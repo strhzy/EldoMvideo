@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Newtonsoft.Json
+@{
     Account user_account = ViewBag.Account;
     User user_name = ViewBag.User;
     Role user_role = ViewBag.Role;
@@ -10,7 +12,37 @@
     List<Delivery> deliveries = ViewBag.Deliveries;
     List<Role> roles = ViewBag.Roles;
     List<User> users = ViewBag.Users;
+    
+    var result = (from po in productOrders
+        join p in products on po.product_id equals p.id
+        join c in categories on p.category_id equals c.id
+        group po by c.category into g
+        select new
+        {
+            CategoryName = g.Key,
+            ProductOrderCount = g.Count()
+        }).ToList();
+    
+    var resultJson = JsonConvert.SerializeObject(result);
+    
+    var ordersByMonth = (from po in productOrders
+        join o in orders on po.order_id equals o.id
+        join p in products on po.product_id equals p.id
+        group new { po, p } by o.order_date.Month into g
+        select new
+        {
+            Month = g.Key,
+            OrderCount = g.Count(),
+            TotalPrice = g.Sum(x => x.p.price * x.po.quantity)
+        }).OrderBy(x => x.Month).ToList();
+    
+    var ordersByMonthJson = JsonConvert.SerializeObject(ordersByMonth);
+
 }
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="card" style="margin-top: 1em; background-color: #E6E6FA; padding: 1em">
     <h3>Роль: @user_role.role_name</h3>
@@ -30,7 +62,7 @@
                         <ul>
                             @foreach(var po in productOrders){
                                 if(po.order_id == ord.id){
-                                    <li>@products[po.product_id - 1].product_name @po.quantity x @products[po.product_id - 1].price </li>
+                                    <li>@products.Where(p => p.id == po.product_id).FirstOrDefault().product_name @po.quantity x @products.Where(p => p.id == po.product_id).FirstOrDefault().price </li>
                                 }
                             }
                         </ul>
@@ -737,6 +769,144 @@
         </div>
         break;
     case 3:
+        <canvas id="PieChart" width="200" height="100" style="margin-top:1rem; margin-bottom: 1rem"></canvas>
+
+        <script>
+            var result = @Html.Raw(@resultJson);
+            
+            var categories = result.map(item => item.CategoryName);
+            var counts = result.map(item => item.ProductOrderCount);
+
+            // Создание pie-графика
+            var ctx = document.getElementById('PieChart').getContext('2d');
+            var PieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Количество заказов по категориям',
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Количество заказов по категориям'
+                        }
+                    }
+                }
+            });
+            
+            PieChart.toBase64Image('image/jpeg', 1);
+        </script>
+        
+        <canvas id="ordersByMonthChart" width="400" height="200" style="margin-top:1rem; margin-bottom: 1rem"></canvas>
+        
+        <button id="downloadButton">Скачать графики</button>
+
+
+
+        <script>
+            var ordersByMonth = @Html.Raw(@ordersByMonthJson);
+
+            var monthLabels = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            var orderCounts = new Array(12).fill(0);
+
+            ordersByMonth.forEach(item => {
+                orderCounts[item.Month - 1] = item.OrderCount;
+            });
+
+            var ctx = document.getElementById('ordersByMonthChart').getContext('2d');
+            var ordersByMonthChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: monthLabels,
+                    datasets: [
+                        {
+                            label: 'Количество заказов',
+                            data: orderCounts,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 0.5,
+                            barPercentage: 0.4,
+                            categoryPercentage: 0.8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Количество и сумма заказов по месяцам'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: false
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        
+        <script>
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                @{ string todaydate = DateOnly.FromDateTime(DateTime.Today).ToString();
+                   todaydate = JsonConvert.SerializeObject(todaydate); }
+                
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                function addChartToPdf(chart, x, y, width, height) {
+                    return new Promise((resolve) => {
+                        const imgData = chart.toBase64Image();
+                        doc.addImage(imgData, 'PNG', x, y, width, height);
+                        resolve();
+                    });
+                }
+                
+                Promise.all([
+                    addChartToPdf(PieChart, 5, 5, 200, 200),
+                    doc.addPage(),
+                    addChartToPdf(ordersByMonthChart, 5, 5, 200, 100),
+                ]).then(() => {
+                    doc.save('charts-' + @Html.Raw(@todaydate) + '.pdf');
+                });
+            });
+        </script>
+        
         <div id="products">
             <div id="add">
                 <h2 style="margin-top: 1em">Добавление продукта</h2>
