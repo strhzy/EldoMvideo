@@ -8,5 +8,6 @@
         public string pic_link { get; set; }
         public int price { get; set; }
         public bool hot { get; set; }
+        public int quantity { get; set; }
     }
 }

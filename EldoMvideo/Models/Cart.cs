@@ -16,7 +16,7 @@
                 int sum = 0;
                 foreach (var item in CartLines)
                 {
-                    sum += item.price;
+                    sum += item.price * item.quantity;
                 }
                 return sum;
             }

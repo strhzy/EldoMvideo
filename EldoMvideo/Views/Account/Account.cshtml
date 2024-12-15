@@ -769,15 +769,14 @@
         </div>
         break;
     case 3:
-        <canvas id="PieChart" width="200" height="100" style="margin-top:1rem; margin-bottom: 1rem"></canvas>
+        <canvas id="PieChart" style="margin-top:1rem; margin-bottom: 1rem; width: 10%; height:  10%"></canvas>
 
         <script>
             var result = @Html.Raw(@resultJson);
             
             var categories = result.map(item => item.CategoryName);
             var counts = result.map(item => item.ProductOrderCount);
-
-            // Создание pie-графика
+            
             var ctx = document.getElementById('PieChart').getContext('2d');
             var PieChart = new Chart(ctx, {
                 type: 'pie',
@@ -824,10 +823,6 @@
         
         <canvas id="ordersByMonthChart" width="400" height="200" style="margin-top:1rem; margin-bottom: 1rem"></canvas>
         
-        <button id="downloadButton">Скачать графики</button>
-
-
-
         <script>
             var ordersByMonth = @Html.Raw(@ordersByMonthJson);
 
@@ -880,6 +875,8 @@
                 }
             });
         </script>
+        
+        <button class="btn btn-info" id="downloadButton">Скачать графики</button>
         
         <script>
             document.getElementById('downloadButton').addEventListener('click', function() {

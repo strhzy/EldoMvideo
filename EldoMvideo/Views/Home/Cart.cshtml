@@ -1,4 +1,7 @@
-﻿@{
+﻿@using EldoMvideo.Controllers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Newtonsoft.Json
+@{
     Cart cart = ViewBag.Cart;
 
     List<Product> cartLines = cart.CartLines;
@@ -14,8 +17,9 @@
             <p class="card-text">@item.product_name</p>
             <p class="card-text">@item.price₽</p>
             <div style="display: flex;">
-                <a style="flex: 1;" class="btn btn-danger" href="/Home/RemoveFromCart?ID=@item.id">Убрать из корзины</a>
-                <a style="flex: 1;" class="btn btn-success" href="/Home/AddToCart?ID=@item.id">Добавить в корзину</a>
+                <a class="btn btn-success" href="/Home/AddToCart?ID=@item.id&Path=/Home/Cart">+</a>
+                <h3>@item.quantity</h3>
+                <a class="btn btn-success" href="/Home/RemoveFromCart?Number=@cartLines.IndexOf(item)&Path=/Home/Cart">-</a>
             </div>
         </div>
     </div>
@@ -25,13 +29,14 @@
 <h3>@cart.FinalPrice₽</h3>
 <a style="margin-top: 1rem;" class="btn btn-danger" href="/Home/RemoveAllFromCart"><h4>Очистить корзину</h4></a>
 <form asp-action="MakeOrder" asp-controller="Home" method="post">
+    @{ DateOnly todaydate = DateOnly.FromDateTime(DateTime.Today); }
     <div>
         <label>Адрес доставки</label>
         <input type="text" class="form-control" name="delivery.address" placeholder="Адрес" required>
     </div>
     <div>
         <label>Дата доставки</label>
-        <input type="date" class="form-control" name="delivery.delivery_date" placeholder="Название" required>
+        <input type="date" min="@todaydate" max="@todaydate.AddMonths(1)" class="form-control" name="delivery.delivery_date" placeholder="Название" required>
     </div>
     <div>
         <button type="submit" class="btn btn-primary" style="margin-top: 1rem; font-size: 1rem">

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Extensions.Primitives;
 
 namespace EldoMvideo.Controllers
 {
@@ -74,7 +75,18 @@ namespace EldoMvideo.Controllers
             Cart cart = new Cart();
             if (Request.Cookies["Cart"] != null)
                 cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
-            cart.CartLines.Add( await ApiHelper.Get<Product>("products", ID));
+            if (Request.Cookies["Cart"] != null &&
+                cart.CartLines.Where(cpr => cpr.id == ID).FirstOrDefault() != null)
+            {
+                cart.CartLines.Where(cpr => cpr.id == ID).FirstOrDefault().quantity += 1;
+            }
+            else
+            {
+                Product pr = new Product();
+                pr = await ApiHelper.Get<Product>("products", ID);
+                pr.quantity = 1;
+                cart.CartLines.Add(pr);
+            }
 
             Response.Cookies.Append("Cart", JsonConvert.SerializeObject(cart));
 
@@ -84,11 +96,20 @@ namespace EldoMvideo.Controllers
         public async Task<IActionResult> RemoveFromCart()
         {
             int number = Convert.ToInt32(Request.Query["Number"]);
+            string path = Request.Query["Path"];
 
             Cart cart = new Cart();
             if (Request.Cookies["Cart"] != null)
                 cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
-            cart.CartLines.RemoveAt(number);
+            
+            if (cart.CartLines[number].quantity == 1)
+            {
+                cart.CartLines.RemoveAt(number);
+            }
+            else
+            {
+                cart.CartLines[number].quantity -= 1;
+            }
 
             Response.Cookies.Append("Cart", JsonConvert.SerializeObject(cart));
 
@@ -125,6 +146,10 @@ namespace EldoMvideo.Controllers
             if (Request.Cookies["Cart"] != null)
             {
                 cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
+                if (cart.CartLines.Count == 0)
+                {
+                    return RedirectToAction("Cart", "Home");
+                }
                 Account account = JsonConvert.DeserializeObject<Account>(Request.Cookies["account"]);
                 delivery.delivery_date = delivery.delivery_date.ToUniversalTime();
                 string json = JsonConvert.SerializeObject(delivery);
@@ -135,7 +160,7 @@ namespace EldoMvideo.Controllers
                     d.address == delivery.address).FirstOrDefault();
                 
                 Order order = new Order();
-                order.order_date = DateTime.Now.ToUniversalTime();
+                order.order_date = (DateTime.Now.ToUniversalTime());
                 order.delivery_id = delivery2.id;
                 order.account_id = account.id;
                 order.total_sum = cart.FinalPrice;
@@ -147,8 +172,8 @@ namespace EldoMvideo.Controllers
                     .Where(o => 
                         o.delivery_id == order.delivery_id &&
                         o.account_id == order.account_id &&
-                        Math.Abs(o.total_sum - order.total_sum) < 0.0001 && // Учет точности
-                        o.order_date.Date == order.order_date.Date)        // Сравнение только даты
+                        Math.Abs(o.total_sum - order.total_sum) < 0.0001 &&
+                        o.order_date.Date == order.order_date.Date)
                     .FirstOrDefault();
                 
                 ProductOrder productOrder = new ProductOrder();
@@ -156,7 +181,7 @@ namespace EldoMvideo.Controllers
                 foreach (var item in cart.CartLines)
                 {
                     productOrder.product_id = item.id;
-                    productOrder.quantity = 1;
+                    productOrder.quantity = item.quantity;
                     
                     success = await ApiHelper.Post<ProductOrder>(JsonConvert.SerializeObject(productOrder), "productorders");
                 }
