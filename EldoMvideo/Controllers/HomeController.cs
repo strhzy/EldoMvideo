@@ -118,8 +118,6 @@ namespace EldoMvideo.Controllers
 
         public async Task<IActionResult> RemoveAllFromCart()
         {
-            int ID = Convert.ToInt32(Request.Query["ID"]);
-
             Cart cart = new Cart();
             if (Request.Cookies["Cart"] != null)
                 cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
@@ -186,7 +184,12 @@ namespace EldoMvideo.Controllers
                     success = await ApiHelper.Post<ProductOrder>(JsonConvert.SerializeObject(productOrder), "productorders");
                 }
                 
-                return RedirectToAction("RemoveAllFromCart", "Home");
+                if (Request.Cookies["Cart"] != null)
+                    cart = JsonConvert.DeserializeObject<Cart>(Request.Cookies["Cart"]);
+                cart.CartLines.Clear();
+                Response.Cookies.Append("Cart", JsonConvert.SerializeObject(cart));
+                
+                return RedirectToAction("Account", "Account");
                 
             }
             else
