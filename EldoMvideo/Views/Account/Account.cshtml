@@ -58,7 +58,7 @@
             @foreach(var ord in orders){
                 @if(ord.account_id == user_account.id){
                     <div class="card" style="margin-top: 1em; background-color: #E6E6FA">
-                        <h5>Заказ от @DateOnly.FromDateTime(ord.order_date)</h5>
+                        <h5>Заказ от @ord.order_date.ToString("G")</h5>
                         <ul>
                             @foreach(var po in productOrders){
                                 if(po.order_id == ord.id){

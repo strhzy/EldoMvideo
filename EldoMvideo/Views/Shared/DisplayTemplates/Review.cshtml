@@ -1,0 +1,53 @@
+@model EldoMvideoAPI.Models.Review
+@{
+    User user = await ApiHelper.Get<User>("users", Model.user_id);
+    string username = user.last_name + " " + user.first_name;
+}
+
+<div class="review">
+    <div class="review-header">
+        <strong>@username</strong> - 
+        <span class="rating">
+            @for (int i = 0; i < 5; i++)
+            {
+                if (i < Model.rating)
+                {
+                    <span class="star">★</span>
+                }
+                else
+                {
+                    <span class="star">☆</span>
+                }
+            }
+        </span>
+    </div>
+    <div class="review-text">
+        <p>@Model.review</p>
+    </div>
+    <div class="review-footer">
+        <span class="review-date">@Model.date.ToString("dd.MM.yyyy")</span>
+    </div>
+</div>
+
+<style>
+    .review {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+    }
+
+    .review-header {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .rating .star {
+        color: gold;
+    }
+
+    .review-footer {
+        font-size: 0.9em;
+        color: #777;
+    }
+</style>

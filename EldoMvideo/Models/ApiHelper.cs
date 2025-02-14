@@ -6,7 +6,7 @@ namespace EldoMvideo.Models;
 
 public static class ApiHelper
 {
-    private static readonly string _url = "http://147.45.196.64:8080";
+    private static readonly string _url = "http://147.45.196.64:8080/api";
 
     public async static Task<T?> Get<T>(string model, long id = 0)
     {

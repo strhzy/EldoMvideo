@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EldoMvideo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20ceeb1299a371b593d1da7607a6faea489f2151")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e8c72c6fb56d6e3a17e4de06c17803b3cfc7c6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("EldoMvideo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EldoMvideo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

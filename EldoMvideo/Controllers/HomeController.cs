@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
+using EldoMvideoAPI.Models;
 using Microsoft.Extensions.Primitives;
 
 namespace EldoMvideo.Controllers
@@ -196,6 +197,34 @@ namespace EldoMvideo.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            Product product = await ApiHelper.Get<Product>("products", id);
+            
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+        
+        [HttpPost]
+        public IActionResult AddReview(Review model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.date = DateTime.UtcNow;
+                model.user_id = (JsonConvert.DeserializeObject<User>(Request.Cookies["account"])).id;
+                
+                ApiHelper.Post<Review>(JsonConvert.SerializeObject(model), "reviews");
+                
+                return RedirectToAction("Details", "Home", new { id = model.product_id });
+            }
+
+            return PartialView("ReviewAdd", model);
         }
     }
 }

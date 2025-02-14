@@ -1,0 +1,92 @@
+@using EldoMvideoAPI.Models
+@model Product
+
+@{
+    ViewData["Title"] = "Product Details";
+    List<Review> reviewsList = await ApiHelper.Get<List<Review>>("reviews");
+    if (reviewsList != null && reviewsList.Any())
+    {
+        reviewsList = (List<Review>)reviewsList.Where(r => r.product_id == Model.id).ToList();
+    }
+    Category cat = await ApiHelper.Get<Category>("categories", Model.category_id);
+}
+
+<div class="product-details">
+    <div class="product-image">
+        <img src="@Model.pic_link" alt="@Model.product_name" class="img-fluid" />
+    </div>
+    
+    <div class="product-info">
+        <h2>@Model.product_name</h2>
+        <p>@await Component.InvokeAsync("AverageRating", new { product_id = Model.id })</p>
+        <p><strong>Цена:</strong> @Model.price₽</p>
+        <p><strong>Категория:</strong> @cat.category</p>
+        <p><strong>Количество:</strong> @Model.quantity</p>
+        <p><strong>Горячий товар:</strong> @(Model.hot ? "Да" : "Нет")</p>
+        <a class="btn btn-success" href="/Home/AddToCart?ID=@Model.id">Добавить в корзину</a>
+    </div>
+</div>
+
+<button class="btn btn-primary" onclick="showReviewForm()">Оставить отзыв</button>
+
+<!-- Вызов Partial View -->
+<div id="reviewModal" style="display: none;">
+    @Html.Partial("ReviewAdd", new Review { product_id = Model.id })
+</div>
+
+<script>
+    function showReviewForm() {
+        document.getElementById('reviewModal').style.display = 'flex';
+    }
+</script>
+
+<div class="product-reviews">
+    <h3>Отзывы:</h3>
+
+    @if (reviewsList != null && reviewsList.Any())
+    {
+        @foreach (var review in reviewsList)
+        {
+            @Html.DisplayFor(model => review, "Review")
+        }
+    }
+    else
+    {
+        <p>Отзывов нет.</p>
+    }
+</div>
+
+<style>
+    .product-details {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .product-image {
+        width: 40%;
+        margin-right: 20px;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-info {
+        flex: 1;
+    }
+
+    .product-info h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .product-info p {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+
+    .btn-success {
+        margin-top: 20px;
+    }
+</style>

@@ -32,8 +32,8 @@
 <a style="margin-top: 1rem;" class="btn btn-danger" href="/Home/RemoveAllFromCart"><h4>Очистить корзину</h4></a>
 <form id="formDelivery" asp-action="MakeOrder" asp-controller="Home" method="post">
     @{
-        string todaydate = DateOnly.FromDateTime(DateTime.Today).ToString();
-        string maxdate = DateOnly.FromDateTime(DateTime.Today.AddMonths(1)).ToString();
+        string todaydate = DateOnly.FromDateTime(DateTime.Today).ToString("yyyy-MM-dd");
+        string maxdate = DateOnly.FromDateTime(DateTime.Today.AddMonths(1)).ToString("yyyy-MM-dd");
     }
     <div>
         <label>Адрес доставки</label>
@@ -58,7 +58,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body">
-            Ошибка оформления заказа
+            Ошибка оформления заказа: возможно данные которые вы ввели не корректны или корзина пуста
         </div>
     </div>
 </div>
@@ -76,7 +76,8 @@
 </div>
 
 <script>
-    const emptyCart = @emptyCart.ToString().ToLower();
+    emptyCart = @emptyCart.ToString().ToLower();
+    console.log(emptyCart);
 
     document.getElementById('submitButton').addEventListener('click', function () {
         // Toast элементы
@@ -98,7 +99,7 @@
 
         // Проверяем условия
         if (
-            emptyCart === "true" ||
+            emptyCart ||
             dateInput.value.trim() === '' ||
             addressInput.value.trim() === ''
         ) {

@@ -19,4 +19,9 @@
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\AverageRating\Deafult.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Components\AverageRating\Deafult.cshtml" />
+  </ItemGroup>
+
 </Project>

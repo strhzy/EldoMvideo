@@ -1,0 +1,54 @@
+@model EldoMvideoAPI.Models.Review
+
+<div class="add-review-overlay">
+    <div class="add-review-content">
+        <h3>Оставить отзыв</h3>
+
+        @using (Html.BeginForm("AddReview", "Home", FormMethod.Post, new { id = "reviewForm" }))
+        {
+            @Html.HiddenFor(m => m.product_id)
+
+            <div class="form-group">
+                <label>Оценка</label>
+                @Html.DropDownListFor(m => m.rating, new SelectList(new[] { 1, 2, 3, 4, 5 }), "Выберите оценку", new { @class = "form-control", required = "required" })
+            </div>
+
+            <div class="form-group">
+                <label>Ваш отзыв</label>
+                @Html.TextAreaFor(m => m.review, new { @class = "form-control", rows = "3", required = "required" })
+            </div>
+
+            <button type="submit" class="btn btn-success">Отправить</button>
+            <button type="button" class="btn btn-danger" onclick="closeReviewForm()">Закрыть</button>
+        }
+    </div>
+</div>
+
+<script>
+    function closeReviewForm() {
+        document.querySelector('.add-review-overlay').style.display = 'none';
+    }
+</script>
+
+<style>
+    .add-review-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .add-review-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+    }
+</style>

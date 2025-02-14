@@ -17,27 +17,13 @@
                 {
                     if(item.category_id == cat_id)
                     {
-                        <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
-                            <div class="card-body align-content-center">
-                                <img class="card-img " src="@item.pic_link">
-                                <p class="card-text">@item.product_name</p>
-                                <p class="card-text">@item.price₽</p>
-                                <a class="btn btn-success" href="/Home/AddToCart?ID=@item.id&Path=@path">Добавить в корзину</a>
-                            </div>
-                        </div>
+                        @Html.DisplayFor(model => item, "Product")
                     }
                 }
             } else {
                 foreach (var item in products)
                 {
-                    <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
-                        <div class="card-body align-content-center">
-                            <img class="card-img " src="@item.pic_link">
-                            <p class="card-text">@item.product_name</p>
-                            <p class="card-text">@item.price₽</p>
-                            <a class="btn btn-success" href="/Home/AddToCart?ID=@item.id&Path=@path">Добавить в корзину</a>
-                        </div>
-                    </div>
+                    @Html.DisplayFor(model => item, "Product")
                 }
             }
         }
