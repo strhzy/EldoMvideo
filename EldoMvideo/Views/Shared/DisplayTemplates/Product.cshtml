@@ -6,9 +6,10 @@
 
 <div class="card rounded" style="width: 25rem; height: 35rem; background-color: #E6E6FA">
     <a class="card-body align-content-center btn" href="/Home/Details/@Model.id">
-        <img class="card-img " src="@Model.pic_link">
+        <img class="card-img" style="object-fit: contain; height: 20rem" src="@Model.pic_link">
         <p class="card-text">@Model.product_name</p>
         <p class="card-text">@Model.price₽</p>
+        <p>@await Component.InvokeAsync("AverageRating", new { product_id = Model.id })</p>
         <a class="btn btn-success" href="/Home/AddToCart?ID=@Model.id&Path=/Home/Catalog">Добавить в корзину</a>
     </a>
 </div>

@@ -1,0 +1,33 @@
+@model double
+
+<span class="rating">
+    <span class="rating-number">@(Model.ToString("0.0"))</span>
+    
+    @for (int i = 0; i < 5; i++)
+    {
+        if (i < Math.Round(Model))
+        {
+            <span class="star">★</span>
+        }
+        else
+        {
+            <span class="star">☆</span>
+        }
+    }
+</span>
+
+<style>
+    .rating {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f39c12;
+    }
+    .rating-number {
+        margin-right: 5px;
+        color: black;
+    }
+    .star {
+        font-size: 20px;
+        color: #f39c12;
+    }
+</style>
