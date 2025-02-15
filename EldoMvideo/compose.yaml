@@ -2,6 +2,6 @@
   eldomvideo:
     image: strhzy/eldomvideo
     ports:
-      - "443:443"
-      - "80:80"
+      - "443:8081"
+      - "80:8080"
     restart: always
