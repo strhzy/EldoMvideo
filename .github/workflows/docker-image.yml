@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./EldoMvideoAPI/Dockerfile
+          file: ./EldoMvideo/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/eldomvideo:latest
 
