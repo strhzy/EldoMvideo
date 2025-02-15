@@ -226,5 +226,10 @@ namespace EldoMvideo.Controllers
 
             return PartialView("ReviewAdd", model);
         }
+
+        public IActionResult _Footer()
+        {
+            return PartialView();
+        }
     }
 }

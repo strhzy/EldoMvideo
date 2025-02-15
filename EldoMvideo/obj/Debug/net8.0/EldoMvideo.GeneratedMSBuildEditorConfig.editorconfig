@@ -70,10 +70,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcUmV2aWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/sharaga/asp/EldoMvideo/EldoMvideo/Views/Shared/DisplayTemplates/_Footer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcX0Zvb3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/sharaga/asp/EldoMvideo/EldoMvideo/Views/Shared/DisplayTemplates/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcX0hlYWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/sharaga/asp/EldoMvideo/EldoMvideo/Views/Shared/ReviewAdd.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJldmlld0FkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sharaga/asp/EldoMvideo/EldoMvideo/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/sharaga/asp/EldoMvideo/EldoMvideo/Views/Shared/_ValidationScriptsPartial.cshtml]
