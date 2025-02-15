@@ -36,14 +36,8 @@ jobs:
     needs: push-docker
     runs-on: self-hosted
     steps:
-      - name: Stop old docker
-        run: sudo docker stop eldomvideo
-
-      - name: Rm old docker
-        run: sudo docker rm eldomvideo
-
       - name: Rm image
-        run: sudo docker rmi strhzy/eldomvideo
+        run: sudo docker rmi -f strhzy/eldomvideo
       
       - name: Pull image
         run: sudo docker pull strhzy/eldomvideo
