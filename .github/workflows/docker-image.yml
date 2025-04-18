@@ -41,6 +41,9 @@ jobs:
       
       - name: Pull image
         run: sudo docker pull strhzy/eldomvideo
+
+      - name: Down docker compose
+        run: sudo docker-compose down -v
         
       - name: Get docker-compose
         run: sudo curl -OJ https://raw.githubusercontent.com/strhzy/EldoMvideo/refs/heads/master/EldoMvideo/compose.yaml
